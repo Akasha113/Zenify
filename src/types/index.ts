@@ -1,3 +1,7 @@
+/* ===== Mood Type ===== */
+export type Mood = 'great' | 'good' | 'neutral' | 'bad' | 'awful';
+
+/* ===== Chat ===== */
 export interface ChatMessage {
   id: string;
   role: 'user' | 'assistant' | 'system';
@@ -16,6 +20,7 @@ export interface Conversation {
   hasFlaggedContent?: boolean;
 }
 
+/* ===== Journal ===== */
 export interface JournalEntry {
   id: string;
   title: string;
@@ -28,20 +33,21 @@ export interface JournalEntry {
   flagReason?: string;
 }
 
-export type Mood = 'great' | 'good' | 'neutral' | 'bad' | 'awful';
-
+/* ===== ✅ FIXED MoodEntry ===== */
 export interface MoodEntry {
   id: string;
   mood: Mood;
   note: string;
-  date: number;
+  date: string; // ✅ ISO string (FIXED)
 }
 
+/* ===== Quotes ===== */
 export interface Quote {
   text: string;
   author: string;
 }
 
+/* ===== User Profile ===== */
 export interface UserProfile {
   name: string;
   isAdmin?: boolean;
@@ -58,6 +64,7 @@ export interface UserProfile {
   };
 }
 
+/* ===== Flagged Content ===== */
 export interface FlaggedContent {
   id: string;
   type: 'chat' | 'journal';

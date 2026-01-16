@@ -30,10 +30,10 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
         <div className={`
           flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center
           ${isUser ? 'ml-2' : 'mr-2'}
-          ${isUser ? 'bg-gray-200' : isCrisisMessage ? 'bg-red-600' : 'bg-black'}
+          ${isUser ? 'bg-dark-purple-200 dark:bg-dark-purple-700' : isCrisisMessage ? 'bg-dark-purple-600 dark:bg-dark-purple-500' : 'bg-black dark:bg-dark-purple-800'}
         `}>
           {isUser ? (
-            <User size={16} className="text-gray-700" />
+            <User size={16} className="text-dark-purple-900 dark:text-dark-purple-100" />
           ) : isCrisisMessage ? (
             <AlertCircle size={16} className="text-white" />
           ) : (
@@ -45,14 +45,14 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           <div className={`
             rounded-lg p-3 border-2
             ${isUser 
-              ? 'bg-gray-200 text-gray-900 border-transparent' 
+              ? 'bg-dark-purple-200 dark:bg-dark-purple-700 text-dark-purple-900 dark:text-dark-purple-100 border-transparent' 
               : isCrisisMessage
-                ? 'bg-red-50 text-red-900 border-red-200 shadow-lg'
-                : 'bg-black text-white border-transparent'
+                ? 'bg-dark-purple-50 dark:bg-dark-purple-900 text-dark-purple-900 dark:text-dark-purple-100 border-dark-purple-300 dark:border-dark-purple-600 shadow-lg'
+                : 'bg-black dark:bg-dark-purple-800 text-white border-transparent'
             }
           `}>
             {isCrisisMessage && (
-              <div className="flex items-center mb-2 text-red-600">
+              <div className="flex items-center mb-2 text-dark-purple-600 dark:text-dark-purple-400">
                 <Heart size={16} className="mr-2" />
                 <span className="font-semibold text-sm">Crisis Support Resources</span>
               </div>
@@ -60,7 +60,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
             <p className="whitespace-pre-wrap">{message.content}</p>
           </div>
           
-          <div className={`text-xs text-gray-500 mt-1 ${isUser ? 'text-right' : 'text-left'}`}>
+          <div className={`text-xs text-dark-purple-500 dark:text-dark-purple-400 mt-1 ${isUser ? 'text-right' : 'text-left'}`}>
             {formatDistanceToNow(new Date(message.timestamp), { addSuffix: true })}
           </div>
         </div>

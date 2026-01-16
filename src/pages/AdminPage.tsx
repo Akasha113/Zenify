@@ -46,10 +46,11 @@ const AdminPage: React.FC = () => {
   }, [flaggedContent, filter, riskFilter]);
 
   return (
-    <div>
+    <div className="min-h-[calc(100vh-4rem)] px-4 pt-8 bg-gradient-to-b from-dark-purple-50 via-white to-dark-purple-100 dark:from-dark-purple-950 dark:via-dark-purple-900 dark:to-dark-purple-950">
+      <div className="max-w-5xl mx-auto">
       <div className="mb-6">
-        <h1 className="text-2xl font-semibold">Admin Dashboard</h1>
-        <p className="text-gray-600">Monitor and review flagged content</p>
+        <h1 className="text-4xl font-semibold text-dark-purple-900 dark:text-dark-purple-100">Admin Dashboard</h1>
+        <p className="text-black dark:text-gray-200">Monitor and review flagged content</p>
       </div>
       
       {/* Filter buttons */}
@@ -80,26 +81,26 @@ const AdminPage: React.FC = () => {
       {/* Content list */}
       <div className="space-y-4">
         {filteredContent.length === 0 ? (
-          <div className="text-center py-12 bg-white rounded-lg shadow-sm">
-            <AlertTriangle size={32} className="mx-auto mb-4 text-gray-400" />
-            <p className="text-gray-500">No flagged content found</p>
+          <div className="text-center py-12 bg-white dark:bg-dark-purple-800 rounded-lg shadow-lg border border-dark-purple-200 dark:border-dark-purple-700">
+            <AlertTriangle size={32} className="mx-auto mb-4 text-dark-purple-400 dark:text-dark-purple-600" />
+            <p className="text-dark-purple-600 dark:text-dark-purple-400">No flagged content found</p>
           </div>
         ) : (
           filteredContent.map((item) => (
             <motion.div
               key={item.id}
-              className="bg-white rounded-lg shadow-sm p-6"
+              className="bg-white dark:bg-dark-purple-800 rounded-lg shadow-lg p-6 border border-dark-purple-200 dark:border-dark-purple-700"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2">
                   {item.type === 'chat' ? (
-                    <MessageCircle size={20} className="text-gray-500" />
+                    <MessageCircle size={20} className="text-dark-purple-600 dark:text-dark-purple-400" />
                   ) : (
-                    <Book size={20} className="text-gray-500" />
+                    <Book size={20} className="text-dark-purple-600 dark:text-dark-purple-400" />
                   )}
-                  <span className="text-sm font-medium capitalize">{item.type}</span>
+                  <span className="text-sm font-medium capitalize text-black dark:text-white">{item.type}</span>
                 </div>
                 
                 {item.reviewed ? (
@@ -118,20 +119,20 @@ const AdminPage: React.FC = () => {
               </div>
               
               <div className="mt-4">
-                <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
-                  <p className="text-red-700 text-sm font-medium">
+                <div className="bg-dark-purple-100 dark:bg-dark-purple-700 border-l-4 border-dark-purple-400 dark:border-dark-purple-500 p-4 mb-4">
+                  <p className="text-dark-purple-700 dark:text-dark-purple-300 text-sm font-medium">
                     Reason for flagging:
                   </p>
-                  <p className="text-red-600">{item.reason}</p>
-                  <p className="text-xs text-gray-500 mt-1">Risk Level: <span className="font-semibold capitalize">{item.riskLevel}</span></p>
+                  <p className="text-dark-purple-600 dark:text-dark-purple-400">{item.reason}</p>
+                  <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">Risk Level: <span className="font-semibold capitalize">{item.riskLevel}</span></p>
                 </div>
                 
-                <div className="bg-gray-50 p-4 rounded">
-                  <p className="text-gray-700 whitespace-pre-wrap">{item.content}</p>
+                <div className="bg-dark-purple-100 dark:bg-dark-purple-700 p-4 rounded">
+                  <p className="text-black dark:text-white whitespace-pre-wrap">{item.content}</p>
                 </div>
               </div>
               
-              <div className="mt-4 text-sm text-gray-500 flex items-center justify-between">
+              <div className="mt-4 text-sm text-dark-purple-600 dark:text-dark-purple-400 flex items-center justify-between">
                 <span>
                   Flagged on {format(item.timestamp, 'MMM d, yyyy - h:mm a')}
                 </span>
@@ -146,6 +147,7 @@ const AdminPage: React.FC = () => {
             </motion.div>
           ))
         )}
+      </div>
       </div>
     </div>
   );

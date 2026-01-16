@@ -43,10 +43,10 @@ const Sidebar: React.FC<SidebarProps> = ({ closeSidebar }) => {
   };
 
   return (
-    <aside className="h-full flex flex-col">
-      <div className="p-4 border-b">
-        <h2 className="text-lg font-semibold text-gray-900">MindFul Journal</h2>
-        <p className="text-sm text-gray-600">Your AI mental health companion</p>
+    <aside className="h-full flex flex-col bg-dark-purple-50 dark:bg-dark-purple-900">
+      <div className="p-4 border-b border-dark-purple-200 dark:border-dark-purple-700">
+        <h2 className="text-lg font-semibold text-black dark:text-dark-purple-100">MindFul Journal</h2>
+        <p className="text-sm text-black dark:text-dark-purple-300">Your AI mental health companion</p>
       </div>
       
       <nav className="flex-1 p-4 space-y-1">
@@ -60,13 +60,19 @@ const Sidebar: React.FC<SidebarProps> = ({ closeSidebar }) => {
             <NavLink
               to={item.to}
               className={({ isActive }) => `
-                flex items-center px-4 py-2 rounded-md text-gray-700
+                flex items-center px-4 py-2 rounded-md text-black dark:text-dark-purple-100
                 ${isActive 
-                  ? 'bg-gray-100 text-black font-medium' 
-                  : 'hover:bg-gray-50 hover:text-black'
+                  ? 'text-white dark:text-white font-medium' 
+                  : 'hover:bg-dark-purple-200 dark:hover:bg-dark-purple-700 hover:text-black dark:hover:text-dark-purple-100'
                 }
                 transition-colors duration-200
               `}
+              style={({ isActive }) => {
+                if (isActive) {
+                  return { backgroundColor: '#6E2B8A' };
+                }
+                return {};
+              }}
               onClick={handleNavClick}
             >
               {item.icon}
@@ -77,13 +83,13 @@ const Sidebar: React.FC<SidebarProps> = ({ closeSidebar }) => {
       </nav>
       
       <motion.div 
-        className="p-4 border-t mt-auto"
+        className="p-4 border-t border-dark-purple-200 dark:border-dark-purple-700 mt-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
         <motion.div 
-          className="text-xs text-gray-600 italic"
+          className="text-xs text-black dark:text-dark-purple-200 italic"
           key={quote.text}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -91,7 +97,7 @@ const Sidebar: React.FC<SidebarProps> = ({ closeSidebar }) => {
           transition={{ duration: 1 }}
         >
           <p>"{quote.text}"</p>
-          <p className="mt-1 text-gray-500">— {quote.author}</p>
+          <p className="mt-1 text-black dark:text-dark-purple-300">— {quote.author}</p>
         </motion.div>
       </motion.div>
     </aside>

@@ -34,7 +34,7 @@ const Input: React.FC<InputProps> = ({
       {label && (
         <label 
           htmlFor={props.id} 
-          className="block mb-2 text-sm font-medium text-gray-700"
+          className="block mb-2 text-sm font-medium text-dark-purple-900 dark:text-dark-purple-200"
         >
           {label}
         </label>
@@ -50,12 +50,12 @@ const Input: React.FC<InputProps> = ({
         <motion.input
           ref={inputRef}
           className={`
-            block w-full rounded-md border border-gray-300 py-2 px-3
-            focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent
+            block w-full rounded-md border border-dark-purple-300 dark:border-dark-purple-700 bg-white dark:bg-dark-purple-700 text-black dark:text-dark-purple-100 py-2 px-3
+            focus:outline-none focus:ring-2 focus:ring-dark-purple-500 dark:focus:ring-dark-purple-400 focus:border-transparent
             transition-all duration-200
             ${icon && iconPosition === 'left' ? 'pl-10' : ''}
             ${icon && iconPosition === 'right' ? 'pr-10' : ''}
-            ${error ? 'border-red-300 focus:ring-red-400' : ''}
+            ${error ? 'border-dark-purple-500 focus:ring-dark-purple-600' : ''}
             ${className}
           `}
           onFocus={handleFocus}
@@ -71,7 +71,7 @@ const Input: React.FC<InputProps> = ({
         
         {isFocused && (
           <motion.div
-            className="absolute bottom-0 left-0 right-0 h-0.5 bg-black"
+            className="absolute bottom-0 left-0 right-0 h-0.5 bg-dark-purple-600 dark:bg-dark-purple-400"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.3 }}
@@ -80,7 +80,7 @@ const Input: React.FC<InputProps> = ({
       </div>
       
       {error && (
-        <p className="mt-1 text-sm text-red-600">{error}</p>
+        <p className="mt-1 text-sm text-dark-purple-600 dark:text-dark-purple-400">{error}</p>
       )}
     </div>
   );

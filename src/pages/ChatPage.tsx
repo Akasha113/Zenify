@@ -149,13 +149,14 @@ const ChatPage: React.FC = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-160px)] flex flex-col md:flex-row">
+    <div className="min-h-[calc(100vh-4rem)] bg-gradient-to-b from-dark-purple-50 via-white to-dark-purple-100 dark:from-dark-purple-950 dark:via-dark-purple-900 dark:to-dark-purple-950 flex flex-col md:flex-row">
       {/* Conversations sidebar - hidden on mobile */}
-      <div className="hidden md:block w-64 bg-white border-r border-gray-200 overflow-y-auto">
-        <div className="p-4 border-b">
+      <div className="hidden md:block w-64 bg-white dark:bg-dark-purple-800 border-r border-dark-purple-200 dark:border-dark-purple-700 overflow-y-auto">
+        <div className="p-4 border-b border-dark-purple-200 dark:border-dark-purple-700">
           <button
             onClick={handleNewConversation}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2 text-white rounded-md hover:opacity-90 transition-colors"
+            style={{ backgroundColor: '#6E2B8A' }}
           >
             <PlusCircle size={16} />
             New Chat
@@ -174,8 +175,8 @@ const ChatPage: React.FC = () => {
               >
                 <div 
                   className={`
-                    w-full border-b border-gray-100 hover:bg-gray-50 transition-colors
-                    ${activeConversation?.id === convo.id ? 'bg-gray-100' : ''}
+                    w-full border-b border-dark-purple-100 dark:border-dark-purple-700 hover:bg-dark-purple-50 dark:hover:bg-dark-purple-700 transition-colors
+                    ${activeConversation?.id === convo.id ? 'bg-dark-purple-100 dark:bg-dark-purple-700' : ''}
                   `}
                 >
                   <div className="flex items-center">
@@ -184,11 +185,11 @@ const ChatPage: React.FC = () => {
                       className="flex-1 p-3 text-left"
                     >
                       <div className="flex items-center gap-2">
-                        <MessageCircle size={16} className="text-gray-500" />
-                        <span className="truncate font-medium">{convo.title}</span>
+                        <MessageCircle size={16} className="text-dark-purple-600 dark:text-dark-purple-400" />
+                        <span className="truncate font-medium text-black dark:text-white">{convo.title}</span>
                       </div>
 
-                      <div className="flex items-center gap-1 mt-1 text-xs text-gray-500">
+                      <div className="flex items-center gap-1 mt-1 text-xs text-dark-purple-600 dark:text-dark-purple-400">
                         <Clock size={12} />
                         <span>{new Date(convo.updatedAt).toLocaleDateString()}</span>
                       </div>
@@ -196,7 +197,7 @@ const ChatPage: React.FC = () => {
                     
                     <button
                       onClick={(e) => handleDeleteConversation(convo.id, e)}
-                      className="p-2 m-1 rounded hover:bg-red-100 text-gray-400 hover:text-red-600 transition-colors"
+                      className="p-2 m-1 rounded hover:bg-dark-purple-200 dark:hover:bg-dark-purple-700 text-dark-purple-600 dark:text-dark-purple-400 hover:text-dark-purple-700 dark:hover:text-dark-purple-300 transition-colors"
                       title="Delete conversation"
                     >
                       <Trash2 size={14} />
@@ -212,7 +213,7 @@ const ChatPage: React.FC = () => {
       {/* Chat main area */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Mobile conversation selector */}
-        <div className="md:hidden p-2 bg-white border-b">
+        <div className="md:hidden p-2 bg-white dark:bg-dark-purple-800 border-b border-dark-purple-200 dark:border-dark-purple-700">
           <div className="flex gap-2">
             <select
               value={activeConversation?.id}
@@ -220,7 +221,7 @@ const ChatPage: React.FC = () => {
                 const selectedConvo = conversations.find((c) => c.id === e.target.value);
                 if (selectedConvo) handleSelectConversation(selectedConvo);
               }}
-              className="flex-1 p-2 border rounded"
+              className="flex-1 p-2 border border-dark-purple-200 dark:border-dark-purple-700 rounded bg-white dark:bg-dark-purple-700 text-black dark:text-white"
             >
               {conversations.map((convo) => (
                 <option key={convo.id} value={convo.id}>
@@ -232,7 +233,7 @@ const ChatPage: React.FC = () => {
             {activeConversation && conversations.length > 1 && (
               <button
                 onClick={(e) => handleDeleteConversation(activeConversation.id, e)}
-                className="px-3 py-2 bg-red-100 text-red-600 rounded hover:bg-red-200 transition-colors"
+                className="px-3 py-2 bg-dark-purple-200 dark:bg-dark-purple-700 text-dark-purple-600 dark:text-dark-purple-300 rounded hover:bg-dark-purple-300 dark:hover:bg-dark-purple-600 transition-colors"
                 title="Delete current conversation"
               >
                 <Trash2 size={16} />
@@ -242,7 +243,8 @@ const ChatPage: React.FC = () => {
 
           <button
             onClick={handleNewConversation}
-            className="w-full mt-2 flex items-center justify-center gap-2 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors"
+            className="w-full mt-2 flex items-center justify-center gap-2 px-4 py-2 text-white rounded-md hover:opacity-90 transition-colors"
+            style={{ backgroundColor: '#6E2B8A' }}
           >
             <PlusCircle size={16} />
             New Chat
@@ -250,19 +252,19 @@ const ChatPage: React.FC = () => {
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
+        <div className="flex-1 overflow-y-auto p-4">
           {activeConversation && (
             <div>
               {getDisplayMessages(activeConversation.messages).length === 0 ? (
                 <motion.div
-                  className="flex flex-col items-center justify-center h-full py-20 text-center text-gray-500"
+                  className="flex flex-col items-center justify-center h-full py-20 text-center text-dark-purple-600 dark:text-dark-purple-400"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <Brain size={48} className="mb-4 text-gray-400" />
-                  <h2 className="text-xl font-semibold mb-2">Welcome to MindFul Journal</h2>
-                  <p className="max-w-md">
+                  <Brain size={48} className="mb-4 text-dark-purple-400 dark:text-dark-purple-600" />
+                  <h2 className="text-xl font-semibold mb-2 text-dark-purple-900 dark:text-dark-purple-100">Welcome to MindFul Journal</h2>
+                  <p className="max-w-md text-black dark:text-gray-200">
                     I'm your AI mental wellness companion. You can talk to me about your thoughts,
                     feelings, or anything that's on your mind.
                   </p>
@@ -280,11 +282,11 @@ const ChatPage: React.FC = () => {
         </div>
 
         {/* Input area */}
-        <div className="p-4 bg-white border-t flex items-center justify-between">
+        <div className="p-4 bg-white dark:bg-dark-purple-800 border-t border-dark-purple-200 dark:border-dark-purple-700 flex items-center justify-between">
           <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
           <button
             onClick={handleClearChat}
-            className="ml-4 flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
+            className="ml-4 flex items-center gap-2 px-4 py-2 bg-dark-purple-600 dark:bg-dark-purple-500 text-white rounded-md hover:bg-dark-purple-700 dark:hover:bg-dark-purple-400 transition-colors"
           >
             <Trash2 size={16} />
             Clear Chat

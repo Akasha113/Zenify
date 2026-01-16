@@ -58,13 +58,13 @@ const JournalForm: React.FC<JournalFormProps> = ({
 
   return (
     <motion.div
-      className="bg-white rounded-lg shadow-lg p-6 max-w-2xl mx-auto"
+      className="bg-white dark:bg-dark-purple-800 rounded-lg shadow-lg p-6 max-w-2xl mx-auto border border-dark-purple-200 dark:border-dark-purple-700"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
     >
       <form onSubmit={handleSubmit}>
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+        <h2 className="text-2xl font-semibold text-dark-purple-900 dark:text-dark-purple-100 mb-4">
           {isEditing ? 'Edit Journal Entry' : 'New Journal Entry'}
         </h2>
         
@@ -87,14 +87,14 @@ const JournalForm: React.FC<JournalFormProps> = ({
         />
         
         <div className="mb-4">
-          <label className="block mb-2 text-sm font-medium text-gray-700">
+          <label className="block mb-2 text-sm font-medium text-dark-purple-900 dark:text-dark-purple-200">
             How are you feeling?
           </label>
           <MoodSelector selectedMood={mood} onSelectMood={setMood} />
         </div>
         
         <div className="mb-4">
-          <label className="block mb-2 text-sm font-medium text-gray-700">
+          <label className="block mb-2 text-sm font-medium text-dark-purple-900 dark:text-dark-purple-200">
             Tags
           </label>
           
@@ -121,7 +121,7 @@ const JournalForm: React.FC<JournalFormProps> = ({
               {tags.map(tag => (
                 <div
                   key={tag}
-                  className="bg-gray-100 text-gray-800 px-2 py-1 rounded-full flex items-center text-sm"
+                  className="bg-dark-purple-100 dark:bg-dark-purple-700 text-dark-purple-900 dark:text-dark-purple-200 px-2 py-1 rounded-full flex items-center text-sm"
                 >
                   #{tag}
                   <button
@@ -129,7 +129,7 @@ const JournalForm: React.FC<JournalFormProps> = ({
                     className="ml-1 focus:outline-none"
                     onClick={() => handleTagRemove(tag)}
                   >
-                    <X size={14} className="text-gray-500 hover:text-gray-700" />
+                    <X size={14} className="text-dark-purple-600 dark:text-dark-purple-400 hover:text-dark-purple-900 dark:hover:text-dark-purple-200" />
                   </button>
                 </div>
               ))}

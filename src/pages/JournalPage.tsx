@@ -89,7 +89,8 @@ const JournalPage: React.FC = () => {
   }, [journals, searchQuery, activeTag]);
 
   return (
-    <div>
+    <div className="min-h-[calc(100vh-4rem)] px-4 pt-8 bg-gradient-to-b from-dark-purple-50 via-white to-dark-purple-100 dark:from-dark-purple-950 dark:via-dark-purple-900 dark:to-dark-purple-950">
+      <div className="max-w-5xl mx-auto">
       <AnimatePresence mode="wait">
         {showForm ? (
           <motion.div
@@ -113,10 +114,12 @@ const JournalPage: React.FC = () => {
             exit={{ opacity: 0 }}
           >
             <div className="flex justify-between items-center mb-6">
-              <h1 className="text-2xl font-semibold">Journal</h1>
+              <h1 className="text-4xl font-semibold text-dark-purple-900 dark:text-dark-purple-100">Journal</h1>
               <Button
                 onClick={handleCreateJournal}
                 icon={<Plus size={18} />}
+                style={{ backgroundColor: '#6E2B8A' }}
+                className="text-white"
               >
                 New Entry
               </Button>
@@ -126,30 +129,31 @@ const JournalPage: React.FC = () => {
             <div className="mb-6 flex flex-col md:flex-row gap-4">
               <div className="relative flex-1">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Search size={18} className="text-gray-400" />
+                  <Search size={18} className="text-dark-purple-500 dark:text-dark-purple-400" />
                 </div>
                 <input
                   type="text"
                   placeholder="Search journals..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent"
+                  className="pl-10 w-full p-2 border border-dark-purple-300 dark:border-dark-purple-700 rounded-md bg-white dark:bg-dark-purple-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />
               </div>
               
               {allTags.length > 0 && (
                 <div className="flex items-center gap-2 overflow-x-auto pb-2">
-                  <Filter size={18} className="text-gray-400 flex-shrink-0" />
+                  <Filter size={18} className="text-dark-purple-600 dark:text-dark-purple-400 flex-shrink-0" />
                   
                   <button
                     onClick={() => setActiveTag(null)}
                     className={`
                       px-2 py-1 rounded-full text-sm whitespace-nowrap
                       ${!activeTag 
-                        ? 'bg-black text-white' 
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        ? 'text-white' 
+                        : 'bg-dark-purple-100 dark:bg-dark-purple-700 text-dark-purple-900 dark:text-dark-purple-100 hover:bg-dark-purple-200 dark:hover:bg-dark-purple-600'
                       }
                     `}
+                    style={!activeTag ? { backgroundColor: '#6E2B8A' } : {}}
                   >
                     All
                   </button>
@@ -161,10 +165,11 @@ const JournalPage: React.FC = () => {
                       className={`
                         px-2 py-1 rounded-full text-sm whitespace-nowrap
                         ${activeTag === tag 
-                          ? 'bg-black text-white' 
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          ? 'text-white' 
+                          : 'bg-dark-purple-100 dark:bg-dark-purple-700 text-dark-purple-900 dark:text-dark-purple-100 hover:bg-dark-purple-200 dark:hover:bg-dark-purple-600'
                         }
                       `}
+                      style={activeTag === tag ? { backgroundColor: '#6E2B8A' } : {}}
                     >
                       #{tag}
                     </button>
@@ -176,11 +181,12 @@ const JournalPage: React.FC = () => {
             {/* Journal list */}
             {filteredJournals.length === 0 ? (
               <div className="text-center py-12">
-                <p className="text-gray-500 mb-4">No journal entries found</p>
+                <p className="text-dark-purple-600 dark:text-dark-purple-400 mb-4">No journal entries found</p>
                 <Button
-                  variant="outline"
                   onClick={handleCreateJournal}
                   icon={<Plus size={18} />}
+                  style={{ backgroundColor: '#6E2B8A' }}
+                  className="text-white"
                 >
                   Create your first entry
                 </Button>
@@ -202,6 +208,7 @@ const JournalPage: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      </div>
     </div>
   );
 };

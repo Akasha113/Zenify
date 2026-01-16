@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center py-12 px-4">
+    <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-start pt-8 px-4 bg-gradient-to-b from-dark-purple-50 via-white to-dark-purple-100 dark:from-dark-purple-950 dark:via-dark-purple-900 dark:to-dark-purple-950">
       <motion.div
         className="text-center max-w-4xl mx-auto mb-16"
         initial={{ opacity: 0, y: 20 }}
@@ -59,10 +59,10 @@ const HomePage: React.FC = () => {
           animate={{ scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="absolute -inset-4 bg-black rounded-full blur-lg opacity-10"></div>
           <div className="relative flex justify-center">
             <motion.div
-              className="h-24 w-24 bg-black rounded-full flex items-center justify-center"
+              className="h-24 w-24 rounded-full flex items-center justify-center"
+              style={{ backgroundColor: '#6E2B8A' }}
               whileHover={{ scale: 1.1, rotate: 5 }}
               transition={{ duration: 0.3 }}
             >
@@ -72,7 +72,7 @@ const HomePage: React.FC = () => {
         </motion.div>
 
           <motion.h1 
-          className="text-6xl md:text-7xl font-semibold mb-6"
+          className="text-6xl md:text-7xl font-semibold mb-6 text-dark-purple-900 dark:text-dark-purple-100"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -81,7 +81,7 @@ const HomePage: React.FC = () => {
         </motion.h1>
         
         <motion.p 
-          className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto"
+          className="text-xl md:text-2xl text-black dark:text-black mb-8 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -96,7 +96,7 @@ const HomePage: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
         >
           <Link to="/chat">
-            <Button size="lg" className="text-lg px-8">
+            <Button size="lg" className="text-lg px-8 text-white" style={{ backgroundColor: '#6E2B8A' }}>
               Start Chatting
             </Button>
           </Link>
@@ -128,30 +128,57 @@ const HomePage: React.FC = () => {
         ].map((feature, index) => (
           <motion.div
             key={feature.title}
-            className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
-            whileHover={{ y: -5, boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)' }}
+            className="bg-white dark:bg-dark-purple-800 p-8 rounded-2xl shadow-md border-2"
+            style={{ borderColor: '#6E2B8A' }}
+            whileHover={{ y: -5, boxShadow: '0 12px 40px rgba(110, 43, 138, 0.25)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
           >
-            <div className="h-16 w-16 bg-black bg-opacity-5 rounded-xl flex items-center justify-center mb-6">
+            <div className="h-16 w-16 rounded-xl flex items-center justify-center mb-6 text-white" style={{ backgroundColor: '#6E2B8A' }}>
               {feature.icon}
             </div>
-            <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-            <p className="text-gray-600">{feature.description}</p>
+            <h3 className="text-xl font-semibold mb-3 text-black dark:text-dark-purple-100">{feature.title}</h3>
+            <p className="text-gray-700 dark:text-dark-purple-300">{feature.description}</p>
           </motion.div>
         ))}
       </motion.div>
 
       <motion.div
-        className="mt-16 text-center max-w-2xl mx-auto p-8 bg-white rounded-2xl shadow-sm border border-gray-100"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.9 }}
+        className="mt-16 text-center max-w-2xl mx-auto p-10 bg-white dark:bg-dark-purple-800 rounded-3xl shadow-lg border-2 relative overflow-hidden"
+        style={{ borderColor: '#6E2B8A' }}
+        initial={{ opacity: 0, y: 20, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.9 }}
+        whileHover={{ y: -8, shadow: '0 20px 50px rgba(110, 43, 138, 0.2)' }}
       >
-        <h2 className="text-2xl font-semibold mb-4">Thought of the Day</h2>
-        <blockquote className="text-xl italic text-gray-700">"{quote.text}"</blockquote>
-        <p className="mt-4 text-gray-500">— {quote.author}</p>
+        <motion.div
+          className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-10 dark:opacity-20"
+          style={{ backgroundColor: '#6E2B8A' }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        />
+        <div className="relative z-10">
+          <motion.div
+            className="inline-block mb-4 px-4 py-2 rounded-full"
+            style={{ backgroundColor: '#6E2B8A' }}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 1.1 }}
+          >
+            <span className="text-white text-sm font-semibold">✨ Daily Inspiration</span>
+          </motion.div>
+          <h2 className="text-3xl font-bold mb-6 text-dark-purple-900 dark:text-dark-purple-100">Thought of the Day</h2>
+          <blockquote className="text-lg italic text-dark-purple-800 dark:text-dark-purple-200 leading-relaxed mb-4">"{quote.text}"</blockquote>
+          <motion.div
+            className="h-1 w-12 mx-auto mb-4"
+            style={{ backgroundColor: '#6E2B8A' }}
+            initial={{ width: 0 }}
+            animate={{ width: 48 }}
+            transition={{ delay: 1.2 }}
+          />
+          <p className="text-dark-purple-700 dark:text-dark-purple-300 font-medium">— {quote.author}</p>
+        </div>
       </motion.div>
     </div>
   );

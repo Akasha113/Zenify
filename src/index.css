@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --primary-color: #a855f7;
+  --primary-dark: #7e22ce;
+  --primary-light: #d8b4fe;
+  --accent-color: #9333ea;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --bg-light: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --border-color: #e5e7eb;
+}
+
+.dark {
+  --primary-color: #a855f7;
+  --primary-dark: #6b21a8;
+  --primary-light: #d8b4fe;
+  --accent-color: #9333ea;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --bg-light: #1f2937;
+  --bg-secondary: #111827;
+  --border-color: #374151;
+}
+
+/* Beautiful gradient background */
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.dark body {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+@layer components {
+  /* Primary button style */
+  .btn-primary {
+    @apply bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+
+  /* Purple gradient card */
+  .card-purple {
+    @apply bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900 dark:to-purple-800 rounded-lg shadow-md;
+  }
+
+  /* Glassmorphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .glass {
+    background: rgba(31, 41, 55, 0.25);
+    border: 1px solid rgba(168, 85, 247, 0.1);
+  }
+}

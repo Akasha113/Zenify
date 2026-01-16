@@ -23,7 +23,7 @@ const AboutPage: React.FC = () => {
   }));
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] py-12 px-4">
+    <div className="min-h-[calc(100vh-4rem)] py-12 px-4 bg-gradient-to-b from-dark-purple-50 via-white to-dark-purple-100 dark:from-dark-purple-950 dark:via-dark-purple-900 dark:to-dark-purple-950">
       <motion.div
         className="max-w-4xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
@@ -32,7 +32,7 @@ const AboutPage: React.FC = () => {
       >
         <div className="text-center mb-16">
           <motion.h1
-            className="text-5xl font-semibold mb-6"
+            className="text-5xl md:text-6xl font-semibold mb-6 text-dark-purple-900 dark:text-dark-purple-100"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -40,7 +40,7 @@ const AboutPage: React.FC = () => {
             About MindFul Journal
           </motion.h1>
           <motion.p
-            className="text-xl text-gray-600 max-w-2xl mx-auto"
+            className="text-xl text-black dark:text-gray-200 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -51,7 +51,7 @@ const AboutPage: React.FC = () => {
 
         <animated.div
           id="card"
-          className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 mb-16"
+          className="bg-white dark:bg-dark-purple-800 rounded-2xl shadow-lg p-8 mb-16 border border-dark-purple-200 dark:border-dark-purple-700"
           onMouseMove={({ clientX, clientY }) => set({ xys: calc(clientX, clientY) })}
           onMouseLeave={() => set({ xys: [0, 0, 1] })}
           style={{
@@ -60,13 +60,13 @@ const AboutPage: React.FC = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <h2 className="text-2xl font-semibold mb-4 text-dark-purple-900 dark:text-dark-purple-100">Our Mission</h2>
+              <p className="text-black dark:text-gray-200 mb-6">
                 At MindFul Journal, we believe that mental wellness should be accessible to everyone. 
                 Our AI-powered platform provides a safe space for self-reflection, emotional 
                 support, and personal growth.
               </p>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-black dark:text-gray-200">
                 While we're not a replacement for professional mental health services, 
                 we aim to be a supportive companion on your journey to better mental well-being.
               </p>
@@ -78,9 +78,14 @@ const AboutPage: React.FC = () => {
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Brain size={64} className="text-black dark:text-white" />
+                  <motion.div
+                    className="h-24 w-24 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: '#6E2B8A' }}
+                  >
+                    <Brain size={64} className="text-white" />
+                  </motion.div>
                 </div>
-                <div className="absolute w-full h-full border-4 border-black dark:border-white rounded-full" />
+                <div className="absolute w-full h-full border-4 rounded-full" style={{ borderColor: '#6E2B8A' }} />
               </motion.div>
             </div>
           </div>
@@ -106,17 +111,17 @@ const AboutPage: React.FC = () => {
           ].map((feature, index) => (
             <motion.div
               key={feature.title}
-              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm"
+              className="bg-white dark:bg-dark-purple-800 p-6 rounded-xl shadow-lg border border-dark-purple-200 dark:border-dark-purple-700"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + index * 0.1 }}
               whileHover={{ y: -5 }}
             >
-              <div className="h-12 w-12 bg-black dark:bg-white bg-opacity-5 dark:bg-opacity-5 rounded-lg flex items-center justify-center mb-4">
+              <div className="h-12 w-12 rounded-lg flex items-center justify-center mb-4 text-white" style={{ backgroundColor: '#6E2B8A' }}>
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
+              <h3 className="text-xl font-semibold mb-2 text-dark-purple-900 dark:text-dark-purple-100">{feature.title}</h3>
+              <p className="text-black dark:text-gray-200">{feature.description}</p>
             </motion.div>
           ))}
         </div>
